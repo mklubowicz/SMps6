@@ -1,4 +1,4 @@
-package com.example.smps6zsad1;
+package com.example.smps6zsad1.models;
 
 public class Question {
     private int questionId;
