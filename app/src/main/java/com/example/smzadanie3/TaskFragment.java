@@ -23,12 +23,11 @@ import java.util.UUID;
 public class TaskFragment extends Fragment {
 
     private TextView nameLabel;
-   // private TextView detailsLabel;
-    private CheckBox doneLabel;
+    private TextView detailsLabel;
     private EditText nameField;
     private Button dateButton;
     private CheckBox doneCheckBox;
-    private static final String ARG_TASK_ID = "ARG_TASM_ID";
+    private static final String ARG_TASK_ID = "ARG_TASK_ID";
     private Task task;
 
     @Override
@@ -44,6 +43,8 @@ public class TaskFragment extends Fragment {
         super.onCreateView(inflater,container,savedInstanceState);
         View view = inflater.inflate(R.layout.fragment_task, container, false);
         nameField = view.findViewById(R.id.task_name);
+        dateButton = view.findViewById(R.id.task_date);
+        doneCheckBox = view.findViewById(R.id.task_done);
         nameField.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -66,8 +67,10 @@ public class TaskFragment extends Fragment {
 
         doneCheckBox.setChecked(task.isDone());
         doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked)-> task.setDone(isChecked));
+
+        nameLabel = view.findViewById(R.id.task_name);
         nameLabel.setText(task.getName());
-        doneLabel.setChecked(task.isDone());
+
         return view;
     }
 

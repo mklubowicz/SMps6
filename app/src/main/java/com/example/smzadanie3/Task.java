@@ -20,6 +20,7 @@ public class Task {
     public Date getDate(){
         return this.date;
     }
+    public void setDate(Date date) {this.date = date;}
 
     public boolean isDone() {
         return done;
@@ -36,4 +37,7 @@ public class Task {
     public UUID getId() {
         return id;
     }
+
+    public void setId(UUID id) { this.id = id;}
+
 }
