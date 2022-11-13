@@ -9,6 +9,11 @@ public class Task {
     private String name;
     private Date date;
     private boolean done;
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
 
     public Task() {
         id = UUID.randomUUID();
@@ -40,4 +45,7 @@ public class Task {
 
     public void setId(UUID id) { this.id = id;}
 
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }

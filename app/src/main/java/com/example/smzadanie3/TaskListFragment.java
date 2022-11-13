@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -51,6 +53,8 @@ public class TaskListFragment extends Fragment {
         private TextView nameTextView;
         private TextView dateTextView;
         private Task task;
+        private ImageView iconImageView;
+        private CheckBox doneCheckBox;
 
         public TaskHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.list_item_task, parent, false));
@@ -58,12 +62,24 @@ public class TaskListFragment extends Fragment {
 
             nameTextView = itemView.findViewById(R.id.task_item_name);
             dateTextView = itemView.findViewById(R.id.task_item_date);
+            iconImageView = itemView.findViewById(R.id.task_icon_imageview);
+            doneCheckBox = itemView.findViewById(R.id.task_is_done_checkbox);
         }
 
         public void bind(Task task) {
             this.task = task;
             nameTextView.setText(task.getName());
             dateTextView.setText(task.getDate().toString());
+            if(task.getCategory().equals(Category.HOME)){
+                iconImageView.setImageResource(R.drawable.ic_house_foreground);
+            }else{
+                iconImageView.setImageResource(R.drawable.ic_studies_foreground);
+            }
+            if(task.isDone()){
+                doneCheckBox.setChecked(true);
+            }else{
+                doneCheckBox.setChecked(false);
+            }
         }
 
         @Override
