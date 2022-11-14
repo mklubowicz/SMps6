@@ -150,6 +150,11 @@ public class TaskListFragment extends Fragment {
             }else{
                 doneCheckBox.setChecked(false);
             }
+            if(doneCheckBox.isChecked()){
+                nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            }else{
+                nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            }
         }
 
         @Override
@@ -180,13 +185,15 @@ public class TaskListFragment extends Fragment {
             CheckBox checkbox = holder.getCheckBox();
             TextView nameTextView = holder.getNameTextView();
             checkbox.setChecked(tasks.get(position).isDone());
-            checkbox.setOnCheckedChangeListener((buttonView, isChecked) ->
-                    tasks.get(holder.getBindingAdapterPosition()).setDone(isChecked));
-            if(checkbox.isChecked()){
-                nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            }else{
-                nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
-            }
+            checkbox.setOnCheckedChangeListener((buttonView, isChecked) ->{
+                        if(checkbox.isChecked()){
+                            nameTextView.setPaintFlags(nameTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                        }else{
+                            nameTextView.setPaintFlags(nameTextView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+                        }
+                        tasks.get(holder.getBindingAdapterPosition()).setDone(isChecked);
+                    });
+
             holder.bind(task);
         }
 
