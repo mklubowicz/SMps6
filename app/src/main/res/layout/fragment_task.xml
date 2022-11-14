@@ -9,6 +9,7 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
         android:text="@string/name_label"/>
 
     <EditText
@@ -20,6 +21,8 @@
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+
         android:layout_height="wrap_content"
         android:text="@string/details_label"/>
 

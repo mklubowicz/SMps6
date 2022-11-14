@@ -11,6 +11,11 @@ import java.util.UUID;
 public class MainActivity extends SingleFragmentActivity{
 
     @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected Fragment createFragment(){
         UUID taskId = (UUID) getIntent().getSerializableExtra(TaskListFragment.KEY_EXTRA_TASK_ID);
         FragmentManager fragmentManager = getSupportFragmentManager();

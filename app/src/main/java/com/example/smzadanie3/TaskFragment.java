@@ -65,7 +65,7 @@ public class TaskFragment extends Fragment {
         });
         categorySpinner.setSelection(task.getCategory().ordinal());
 
-        DatePickerDialog.OnDateSetListener date = (view12,year, month, day) -> {
+        DatePickerDialog.OnDateSetListener date = (view1,year, month, day) -> {
           calendar.set(Calendar.YEAR,year);
           calendar.set(Calendar.MONTH,month);
           calendar.set(Calendar.DAY_OF_MONTH,day);
@@ -96,7 +96,6 @@ public class TaskFragment extends Fragment {
         });
 
         dateField.setText(task.getDate().toString());
-        dateField.setEnabled(false);
 
         doneCheckBox.setChecked(task.isDone());
         doneCheckBox.setOnCheckedChangeListener((buttonView, isChecked)-> task.setDone(isChecked));

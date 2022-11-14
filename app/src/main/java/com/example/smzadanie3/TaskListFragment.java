@@ -27,6 +27,7 @@ public class TaskListFragment extends Fragment {
     private TaskAdapter adapter;
     private boolean subtitleVisible;
     public static final String KEY_EXTRA_TASK_ID = "KEY_EXTRA_TASK_ID";
+    public static final String KEY_IS_SUBTITLE_VISIBLE= "subtitleVisible";
 
     @Override
     public void onResume(){
@@ -37,7 +38,16 @@ public class TaskListFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        if(savedInstanceState != null){
+            subtitleVisible = savedInstanceState.getBoolean(KEY_IS_SUBTITLE_VISIBLE);
+        }
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(KEY_IS_SUBTITLE_VISIBLE,subtitleVisible);
     }
 
     public void updateSubtitle(){
